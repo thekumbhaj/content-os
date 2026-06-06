@@ -52,6 +52,7 @@ Rules:
 - Use clean LinkedIn formatting
 - End with a thoughtful question
 - Sound like a senior engineer or CTO
+-don't user any symbole like :, * ,—,-- etc.
 
 Return only the post.
 `;
