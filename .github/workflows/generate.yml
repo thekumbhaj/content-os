@@ -30,8 +30,8 @@ jobs:
 
       - name: Commit Generated Content
         run: |
-          git config user.thekumbhaj"github-actions"
-          git config user.kumbhajs0@gmail.com "github-actions@github.com"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
 
           git add .
 
