@@ -1,0 +1,40 @@
+name: Daily Content Generator
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "0 4 * * *"
+
+jobs:
+  generate:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm install
+
+      - run: node generate.js
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Commit Generated Content
+        run: |
+          git config user.thekumbhaj"github-actions"
+          git config user.kumbhajs0@gmail.com "github-actions@github.com"
+
+          git add .
+
+          git commit -m "daily content" || echo "No changes"
+
+          git push
